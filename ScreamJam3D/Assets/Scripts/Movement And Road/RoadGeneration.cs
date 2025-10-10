@@ -44,8 +44,11 @@ public class RoadGeneration : MonoBehaviour
         // Pick a random new road piece and add it to the list of placed road pieces
         if (index != 0)
         {
-            GameObject newRoadPiece = Object.Instantiate(roadPieces[Random.Range(0, roadPieces.Count)], Vector3.zero, Quaternion.identity, roadParent);
+            int roadPieceIndex = Random.Range(0, roadPieces.Count);
+            GameObject newRoadPiece = Object.Instantiate(roadPieces[roadPieceIndex], Vector3.zero, Quaternion.identity, roadParent);
             Transform newRoadTransform = newRoadPiece.transform;
+            if (roadPieceIndex > 0 && Random.Range(0f, 1f) > 0.5f)
+                newRoadTransform.localScale = new Vector3(1,1,-1);
             placedRoad.Add(newRoadPiece);
             // Overflow, remove last road
             if (placedRoad.Count > maxRoadPieces && index > 0)
