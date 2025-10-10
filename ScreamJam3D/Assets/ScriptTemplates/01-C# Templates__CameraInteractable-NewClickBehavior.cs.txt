@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class #SCRIPTNAME# : Monobehaviour, IMouseInteract
+public class #SCRIPTNAME# : MonoBehaviour, IMouseInteract
 {
+    public Bounds2D bounds;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,5 +21,23 @@ public class #SCRIPTNAME# : Monobehaviour, IMouseInteract
     public void OnPress()
     {
         #NOTRIM#
+    }
+
+
+    public void OnDrawGizmosSelected()
+    {
+        Vector3[] points = new Vector3[]
+        {
+            new Vector3(bounds.minX, bounds.minZ),
+            new Vector3(bounds.minX, bounds.maxZ),
+            new Vector3(bounds.maxX, bounds.maxZ),
+            new Vector3(bounds.maxX, bounds.minZ)
+        };
+
+
+        Gizmos.DrawLine(points[0], points[1]);
+        Gizmos.DrawLine(points[1], points[2]);
+        Gizmos.DrawLine(points[2], points[3]);
+        Gizmos.DrawLine(points[3], points[0]);
     }
 }
