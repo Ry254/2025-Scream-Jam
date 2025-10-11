@@ -808,6 +808,13 @@ MonoBehaviour:
   roadParent: {fileID: 1418364664}
   truckTransform: {fileID: 1643995712}
   scoreDisplay: {fileID: 242906583}
+  maxSpeed: 200
+  speedPerSecond: 50
+  brakingSpeed: 100
+  speedDecayPerSecond: 10
+  maxTurnAngle: 90
+  turnAnglePerSecond: 360
+  speedRequiredForMaxTurnSpeed: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
