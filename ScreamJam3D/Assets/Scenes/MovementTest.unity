@@ -811,6 +811,7 @@ MonoBehaviour:
   maxSpeed: 200
   speedPerSecond: 50
   brakingSpeed: 100
+  speedDecayPerSecond: 10
   maxTurnAngle: 90
   turnAnglePerSecond: 360
   speedRequiredForMaxTurnSpeed: 0.5
