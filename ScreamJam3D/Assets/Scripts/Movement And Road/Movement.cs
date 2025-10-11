@@ -37,7 +37,7 @@ public class Movement : MonoBehaviour
     void Update()
     {
         Vector2 movement = movementInput.ReadValue<Vector2>();
-        truckVelocity = Mathf.Clamp(movement.y > 0 ? truckVelocity + movement.y * Time.deltaTime * speedPerSecond : truckVelocity - movement.y * Time.deltaTime * brakingSpeed, 0, maxSpeed);
+        truckVelocity = Mathf.Clamp(movement.y > 0 ? truckVelocity + movement.y * Time.deltaTime * speedPerSecond : truckVelocity + movement.y * Time.deltaTime * brakingSpeed, 0, maxSpeed);
         turningValue = Mathf.Clamp(turningValue - movement.x * Time.deltaTime * turnAnglePerSecond, -maxTurnAngle, maxTurnAngle);
         RotateTruck(turningValue * Time.deltaTime);
         MoveTruckForward(truckVelocity * Time.deltaTime);
