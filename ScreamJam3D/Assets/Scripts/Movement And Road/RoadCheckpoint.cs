@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.Hierarchy;
 using UnityEngine;
 
 public class RoadCheckpoint : MonoBehaviour
@@ -19,7 +20,7 @@ public class RoadCheckpoint : MonoBehaviour
         if (collider.gameObject.tag == "Truck" && !hit)
         {
             hit = true;
-            roadGen.NextRoadPiece(gameObject);
+            roadGen.NextRoadPiece(transform.parent.gameObject);
         }
     }
 }
