@@ -17,6 +17,14 @@ public class CameraIcons : MonoBehaviour
     void Update()
     {
         // ¯\_(ツ)_/¯
+
+        float height = GetComponentInParent<RectTransform>().rect.width / 3;
+        float width = GetComponentInParent<RectTransform>().rect.height / (float)1.3;
+
+        leftArrow.transform.localPosition = new Vector3(-width - 10, 0, 0);
+        rightArrow.transform.localPosition = new Vector3(width + 10, 0, 0);
+        upArrow.transform.localPosition = new Vector3(0, height - 20, 0);
+        downArrow.transform.localPosition = new Vector3(0, -height + 20, 0);
     }
 
     /// <summary>
