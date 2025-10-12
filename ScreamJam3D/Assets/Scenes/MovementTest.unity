@@ -632,14 +632,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2f7ce48a6426c84c8693324674b19a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRoadPieces: 15
+  maxRoadPieces: 10
   maxRoadAngle: 90
+  maxRoadPiecesBehindPlayer: 2
   truckTransform: {fileID: 1643995712}
   roadParent: {fileID: 1418364664}
   roadPieces:
   - {fileID: 3694911451695571962, guid: 885faca57b2e3e049bec2326f8510c1d, type: 3}
   - {fileID: 3694911451695571962, guid: 81762413fc4ecc44e8506c4937aa0180, type: 3}
   - {fileID: 3694911451695571962, guid: a48172e00103080458c160146561bdba, type: 3}
+  checkpointPrefab: {fileID: 1149109282034113991, guid: fd20f6c1e4888e5489b540e5167248b6, type: 3}
 --- !u!4 &1418364664
 Transform:
   m_ObjectHideFlags: 0
@@ -693,8 +695,9 @@ GameObject:
   - component: {fileID: 1643995712}
   - component: {fileID: 1643995711}
   - component: {fileID: 1643995710}
-  - component: {fileID: 1643995709}
   - component: {fileID: 1643995713}
+  - component: {fileID: 1643995714}
+  - component: {fileID: 1643995715}
   m_Layer: 0
   m_Name: Truck
   m_TagString: Truck
@@ -702,27 +705,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &1643995709
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1643995708}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1643995710
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -815,6 +797,48 @@ MonoBehaviour:
   maxTurnAngle: 90
   turnAnglePerSecond: 360
   speedRequiredForMaxTurnSpeed: 0.5
+--- !u!65 &1643995714
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643995708}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0.25, z: 0}
+--- !u!65 &1643995715
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643995708}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

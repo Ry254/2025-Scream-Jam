@@ -8,11 +8,13 @@ public class RoadGeneration : MonoBehaviour
     public int maxRoadPieces;
     [Tooltip("WARNING: Going above 90 can lead to intersection!")]
     public float maxRoadAngle;
+    public int maxRoadPiecesBehindPlayer;
 
     [Header("Scene Objects/Prefabs")]
     public Transform truckTransform;
     public Transform roadParent;
     public List<GameObject> roadPieces;
+    public GameObject checkpointPrefab;
 
     // Road pieces present in scene
     private List<GameObject> placedRoad;
@@ -70,14 +72,18 @@ public class RoadGeneration : MonoBehaviour
                 choice = false;
             if (roadPieceIndex > 0 && choice)
             {
-                newRoadTransform.localScale = new Vector3(1,1,-1);
+                BoxCollider checkpoint = newRoadPiece.GetComponentInChildren<BoxCollider>();
+                Vector3 checkpointPosition = Vector3.Scale(checkpoint.transform.position, new Vector3(1, 1, -1));
+                Quaternion checkpointRotation = checkpoint.transform.rotation;
+                Object.Destroy(checkpoint.gameObject);
+                newRoadTransform.localScale = new Vector3(1, 1, -1);
                 turnAngle *= -1;
+                Component.Instantiate(checkpointPrefab, checkpointPosition, checkpointRotation, newRoadTransform);
             }
             placedRoad.Add(newRoadPiece);
             angle += turnAngle;
-            Debug.Log(angle);
             // Overflow, remove last road
-            if (placedRoad.Count > maxRoadPieces && index > 0)
+            if (placedRoad.Count > maxRoadPieces && index > maxRoadPiecesBehindPlayer - 1)
             {
                 GameObject roadToDelete = placedRoad[0];
                 placedRoad.RemoveAt(0);

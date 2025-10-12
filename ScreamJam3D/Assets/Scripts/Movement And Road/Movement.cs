@@ -68,4 +68,13 @@ public class Movement : MonoBehaviour
     {
         roadParent.RotateAround(truckTransform.position, Vector3.up, turningValue * Mathf.Clamp(truckVelocity / (maxSpeed * speedRequiredForMaxTurnSpeed), 0, 1));
     }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.tag == "Road")
+        {
+            // Crashed, game over!
+            Debug.Log("Crash!");
+        }
+    }
 }

@@ -9,6 +9,7 @@ TagManager:
   - Connector
   - Truck
   - Death Text
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
