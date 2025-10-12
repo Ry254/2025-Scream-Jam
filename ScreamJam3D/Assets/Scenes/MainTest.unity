@@ -817,17 +817,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotations:
   - frame: 1
-    rotation: {x: 0, y: -0.70710677, z: 0, w: 0.70710677}
+    rotation: {x: -0.13462964, y: 0.53631663, z: 0.10408373, w: -0.8266837}
+    position: {x: -6.07, y: 0.8699999, z: -2.4}
   - frame: 2
-    rotation: {x: 0, y: 0.000008726646, z: 0, w: 1}
+    rotation: {x: 0, y: 0.07637969, z: 0, w: 0.9970788}
+    position: {x: -5.707087, y: 0.8699999, z: -2.823}
   - frame: 3
-    rotation: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
+    rotation: {x: 0.07154788, y: 0.6009106, z: 0.094124325, w: 0.7905238}
+    position: {x: -5.55, y: 0.8699999, z: -2.54}
   - frame: 5
-    rotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
+    rotation: {x: 0.091601305, y: 0.9874314, z: 0.011896936, w: 0.128245}
+    position: {x: -4.45, y: 0.66, z: -2.59}
   - frame: 4
-    rotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
+    rotation: {x: 0.4050618, y: 0, z: 0, w: 0.9142893}
+    position: {x: -5.707087, y: 0.54, z: -2.19}
   - frame: 6
     rotation: {x: -0.70710677, y: 0, z: 0, w: 0.70710677}
+    position: {x: -5.707087, y: 0.8699999, z: -2.823}
+  defaultDirection: 2
   rotateTime: 0.1
 --- !u!114 &247999350
 MonoBehaviour:
@@ -889,13 +896,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 247999347}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.07637768, z: -0, w: 0.99707896}
-  m_LocalPosition: {x: -5.7070866, y: 0.8699999, z: -2.823}
+  m_LocalRotation: {x: 0.40506175, y: 0, z: 0, w: 0.91428936}
+  m_LocalPosition: {x: -5.707087, y: 0.54, z: -2.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1973180724}
-  m_LocalEulerAnglesHint: {x: 0, y: 8.761, z: 0}
+  m_LocalEulerAnglesHint: {x: 47.79, y: 0, z: 0}
 --- !u!1 &454887501
 GameObject:
   m_ObjectHideFlags: 0
@@ -3052,6 +3059,13 @@ MonoBehaviour:
   roadParent: {fileID: 2034586050}
   truckTransform: {fileID: 1973180724}
   scoreDisplay: {fileID: 127156059}
+  maxSpeed: 0
+  speedPerSecond: 0
+  brakingSpeed: 0
+  speedDecayPerSecond: 0
+  maxTurnAngle: 0
+  turnAnglePerSecond: 0
+  speedRequiredForMaxTurnSpeed: 0
 --- !u!65 &1973180726
 BoxCollider:
   m_ObjectHideFlags: 0

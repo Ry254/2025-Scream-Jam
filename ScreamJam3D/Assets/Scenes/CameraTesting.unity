@@ -1887,7 +1887,7 @@ Transform:
   m_GameObject: {fileID: 1538117723}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1952,16 +1952,22 @@ MonoBehaviour:
   rotations:
   - frame: 1
     rotation: {x: 0, y: -0.70710677, z: 0, w: 0.70710677}
+    position: {x: 0, y: 0, z: 0}
   - frame: 2
-    rotation: {x: 0, y: 0.000008726646, z: 0, w: 1}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0, y: 1.12, z: 0}
   - frame: 3
     rotation: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
+    position: {x: 0, y: 0, z: 0}
   - frame: 5
     rotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
+    position: {x: 0, y: 0, z: 0}
   - frame: 4
     rotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
+    position: {x: 0, y: 0, z: 0}
   - frame: 6
     rotation: {x: -0.70710677, y: 0, z: 0, w: 0.70710677}
+    position: {x: 0, y: 0, z: 0}
   rotateTime: 0.1
 --- !u!1 &1578198315
 GameObject:
