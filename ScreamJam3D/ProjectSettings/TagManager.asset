@@ -8,6 +8,7 @@ TagManager:
   - Spawn
   - Connector
   - Truck
+  - Death Text
   layers:
   - Default
   - TransparentFX
