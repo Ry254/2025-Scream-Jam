@@ -879,7 +879,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sleepTime: 10000
   awakeTime: 10000
-  text: {fileID: 1510100276}
 --- !u!1 &950646608
 GameObject:
   m_ObjectHideFlags: 0
