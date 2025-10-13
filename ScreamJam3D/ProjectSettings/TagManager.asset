@@ -9,6 +9,7 @@ TagManager:
   - Connector
   - Truck
   - Checkpoint
+  - Road
   layers:
   - Default
   - TransparentFX
