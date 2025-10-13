@@ -22,8 +22,8 @@ public class RotateCamera : MonoBehaviour
 
     public float rotateTime = 0.1f;
 
-    private Dictionary<PlayerLookState, Quaternion> frameRotations = new();
-    private Dictionary<PlayerLookState, Vector3> framePositions = new();
+    private readonly Dictionary<PlayerLookState, Quaternion> frameRotations = new();
+    private readonly Dictionary<PlayerLookState, Vector3> framePositions = new();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -43,12 +43,17 @@ public class RotateCamera : MonoBehaviour
 
     }
 
+    void OnDestroy()
+    {
+        CameraManager.Instance.OnCameraChange -= Rotate;
+    }
+
     private void Rotate(PlayerLookState state)
     {
         StopCoroutine(Rotation(state));
         StartCoroutine(Rotation(state));
     }
-    
+
     public IEnumerator Rotation(PlayerLookState state)
     {
         Transform t = Camera.main.transform;

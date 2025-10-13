@@ -226,6 +226,52 @@ MonoBehaviour:
     maxX: 5
     maxZ: 90
   targetFrame: 3
+--- !u!1 &91873144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 91873146}
+  - component: {fileID: 91873145}
+  m_Layer: 0
+  m_Name: Death Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &91873145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91873144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c0ef341be2c90947a9096097d5853d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeathFlavorText: You seem to have died... spooky~...
+  HelpText: Try not dying
+--- !u!4 &91873146
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91873144}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.026159, y: 7.3404245, z: -9.45699}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &93460933
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,8 +825,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 950646608}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 500.13736, y: 253.50229, z: 73.29272}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 500.47662, y: 253.28656, z: 73.09655}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -790,7 +836,7 @@ Transform:
   - {fileID: 45577670}
   - {fileID: 1493156925}
   - {fileID: 1001344785}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1598362550}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1001344784
 GameObject:
@@ -2074,7 +2120,8 @@ Transform:
   m_LocalPosition: {x: -0.33925915, y: 0.21572876, z: 0.19616508}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 950646609}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1598362551
@@ -2108,6 +2155,8 @@ MonoBehaviour:
   - direction: 6
     bounds:
     - {fileID: 1493156920}
+  IsInPlay: 1
+  rootFrameHolder: {fileID: 0}
 --- !u!1 &1778689235
 GameObject:
   m_ObjectHideFlags: 0
@@ -2886,6 +2935,6 @@ SceneRoots:
   - {fileID: 1598362550}
   - {fileID: 1034449314}
   - {fileID: 1315814021}
-  - {fileID: 950646609}
   - {fileID: 93460934}
   - {fileID: 151869481}
+  - {fileID: 91873146}

@@ -47,6 +47,8 @@ public class CameraManager : MonoBehaviour
     private IMouseInteract[] _activeMouseInteraction = new IMouseInteract[0];
     public IMouseInteract[] ActiveButtons => _activeMouseInteraction;
 
+    [HideInInspector] public bool IsInPlay = true;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -63,6 +65,8 @@ public class CameraManager : MonoBehaviour
 
     private void OnMouseClick(InputAction.CallbackContext context)
     {
+        if (!IsInPlay) return;
+
         Vector2 mousePos = Mouse.current.position.value;
 
         foreach (var boundary in _activeMouseInteraction)
@@ -70,9 +74,11 @@ public class CameraManager : MonoBehaviour
             boundary.OnPress(mousePos);
         }
     }
-    
+
     private void OnMouseMove(InputAction.CallbackContext context)
     {
+        if (!IsInPlay) return;
+
         Vector2 mousePos = Mouse.current.position.value;
 
         foreach (var boundary in _activeMouseInteraction)
