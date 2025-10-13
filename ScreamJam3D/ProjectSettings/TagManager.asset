@@ -10,6 +10,7 @@ TagManager:
   - Truck
   - Death Text
   - Checkpoint
+  - Road
   layers:
   - Default
   - TransparentFX
