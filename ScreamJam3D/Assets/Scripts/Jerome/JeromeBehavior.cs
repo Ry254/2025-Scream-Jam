@@ -1,7 +1,5 @@
 using System.Diagnostics;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class JeromeBehavior : MonoBehaviour
 {
@@ -15,15 +13,24 @@ public class JeromeBehavior : MonoBehaviour
 
     private bool wait;
 
+    [SerializeField]
+    private SkinnedMeshRenderer mesh;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        sleepTimer = Stopwatch.StartNew();
+        sleepTimer = new Stopwatch();
         awakeTimer = new Stopwatch();
 
         currentLook = CameraManager.Instance.CurrentLookState;
         CameraManager.Instance.OnCameraChange += Look;
         wait = false;
+
+        mesh.enabled = false;
+
+        sleepTimer.Restart();
+        awakeTimer.Stop();
+        UnityEngine.Debug.Log("Started");
     }
 
     // Update is called once per frame
@@ -38,7 +45,9 @@ public class JeromeBehavior : MonoBehaviour
             }
             else
             {
+                wait = false;
                 awakeTimer.Restart();
+                mesh.enabled = true;
             }
         }
 
@@ -47,6 +56,7 @@ public class JeromeBehavior : MonoBehaviour
             awakeTimer.Stop();
             sleepTimer.Restart();
             wait = false;
+            mesh.enabled = false;
         }
     }
 
@@ -56,6 +66,7 @@ public class JeromeBehavior : MonoBehaviour
         {
             awakeTimer.Restart();
             wait = false;
+            mesh.enabled = false;
         }
         else if (look == PlayerLookState.RightWindow && awakeTimer.IsRunning)
         {

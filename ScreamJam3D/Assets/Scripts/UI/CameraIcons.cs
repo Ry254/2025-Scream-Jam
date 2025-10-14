@@ -25,58 +25,64 @@ public class CameraIcons : MonoBehaviour
     /// <param name="frame">where the player is looking</param>
     public void CameraChange(PlayerLookState frame)
     {
-        switch (frame)
+        if (leftArrow != null &&
+            rightArrow != null &&
+            upArrow != null &&
+            downArrow != null)
         {
-            case PlayerLookState.None:
-                leftArrow.SetActive(false);
-                rightArrow.SetActive(false);
-                upArrow.SetActive(false);
-                downArrow.SetActive(false);
-                break;
+            switch (frame)
+            {
+                case PlayerLookState.None:
+                    leftArrow.SetActive(false);
+                    rightArrow.SetActive(false);
+                    upArrow.SetActive(false);
+                    downArrow.SetActive(false);
+                    break;
 
-            case PlayerLookState.SteeringWheel:
-                leftArrow.SetActive(true);
-                rightArrow.SetActive(true);
-                upArrow.SetActive(true);
-                downArrow.SetActive(true);
-                break;
+                case PlayerLookState.SteeringWheel:
+                    leftArrow.SetActive(true);
+                    rightArrow.SetActive(true);
+                    upArrow.SetActive(true);
+                    downArrow.SetActive(true);
+                    break;
 
 
-            case PlayerLookState.LeftWindow:
-                leftArrow.SetActive(false);
-                rightArrow.SetActive(true);
-                upArrow.SetActive(false);
-                downArrow.SetActive(false);
-                break;
+                case PlayerLookState.LeftWindow:
+                    leftArrow.SetActive(false);
+                    rightArrow.SetActive(true);
+                    upArrow.SetActive(false);
+                    downArrow.SetActive(false);
+                    break;
 
-            case PlayerLookState.RightWindow:
-                leftArrow.SetActive(true);
-                rightArrow.SetActive(true);
-                upArrow.SetActive(false);
-                downArrow.SetActive(false);
-                break;
+                case PlayerLookState.RightWindow:
+                    leftArrow.SetActive(true);
+                    rightArrow.SetActive(true);
+                    upArrow.SetActive(false);
+                    downArrow.SetActive(false);
+                    break;
 
-            case PlayerLookState.Pedals:
-                leftArrow.SetActive(false);
-                rightArrow.SetActive(false);
-                upArrow.SetActive(true);
-                downArrow.SetActive(false);
-                break;
+                case PlayerLookState.Pedals:
+                    leftArrow.SetActive(false);
+                    rightArrow.SetActive(false);
+                    upArrow.SetActive(true);
+                    downArrow.SetActive(false);
+                    break;
 
-            case PlayerLookState.Fridge:
-                leftArrow.SetActive(true);
-                rightArrow.SetActive(false);
-                upArrow.SetActive(false);
-                downArrow.SetActive(false);
-                break;
+                case PlayerLookState.Fridge:
+                    leftArrow.SetActive(true);
+                    rightArrow.SetActive(false);
+                    upArrow.SetActive(false);
+                    downArrow.SetActive(false);
+                    break;
 
-            case PlayerLookState.SunRoof:
-                leftArrow.SetActive(false);
-                rightArrow.SetActive(false);
-                upArrow.SetActive(false);
-                downArrow.SetActive(true);
-                break;
+                case PlayerLookState.SunRoof:
+                    leftArrow.SetActive(false);
+                    rightArrow.SetActive(false);
+                    upArrow.SetActive(false);
+                    downArrow.SetActive(true);
+                    break;
 
+            }
         }
     }
 }
