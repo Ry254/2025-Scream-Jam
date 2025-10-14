@@ -1028,6 +1028,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 014986c7d0ed5d94da6c3223c0c15acb, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 182acf16693a3bc4ea269a4aa05bf8c1, type: 2}
     - target: {fileID: 919132149155446097, guid: 014986c7d0ed5d94da6c3223c0c15acb, type: 3}
       propertyPath: m_Name
       value: rightMirror
@@ -1222,6 +1226,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 014986c7d0ed5d94da6c3223c0c15acb, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 182acf16693a3bc4ea269a4aa05bf8c1, type: 2}
     - target: {fileID: 919132149155446097, guid: 014986c7d0ed5d94da6c3223c0c15acb, type: 3}
       propertyPath: m_Name
       value: leftMirror
@@ -1366,6 +1374,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: dd2d980804f43004bbc4219d6592c645, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ed59870fd91ef894aab21af2f8791a98, type: 2}
     - target: {fileID: 919132149155446097, guid: dd2d980804f43004bbc4219d6592c645, type: 3}
       propertyPath: m_Name
       value: rearMirror
