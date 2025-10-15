@@ -93,8 +93,7 @@ public class RoadGeneration : MonoBehaviour
             if (placedRoad.Count == 1)
             {
                 Transform spawn = GetTransform(newRoadTransform, "Spawn");
-                roadParent.position = truckTransform.position + Vector3.down * (truckTransform.localScale.y / 2 + newRoadTransform.localScale.y / 2)
-                    + (newRoadTransform.position - spawn.position);
+                roadParent.position = truckTransform.position + Vector3.down * 4 + (newRoadTransform.position - spawn.position);
             }
             // Otherwise, place new piece such that its connected aligns with the previous piece's pivot
             else

@@ -10,6 +10,8 @@ public class Movement : MonoBehaviour
     public Transform roadParent;
     public Transform truckTransform;
     public TextMeshPro scoreDisplay;
+    public Pedal accelerator;
+    public Pedal brake;
 
     // Movement variables
     [Header("Driving Variables")]
@@ -40,12 +42,13 @@ public class Movement : MonoBehaviour
     {
         if (!crashed)
         {
-            Vector2 movement = movementInput.ReadValue<Vector2>();
-            truckVelocity = Mathf.Clamp(movement.y > 0 ? truckVelocity + movement.y * Time.deltaTime * speedPerSecond
-                : truckVelocity + movement.y * Time.deltaTime * brakingSpeed, 0, maxSpeed);
-            if (movement.y == 0)
+            float movement = accelerator.Value + brake.Value;
+            truckVelocity = Mathf.Clamp(movement > 0 ? truckVelocity + movement * Time.deltaTime * speedPerSecond
+                : truckVelocity + movement * Time.deltaTime * brakingSpeed, 0, maxSpeed);
+            if (movement == 0)
                 truckVelocity = Mathf.Clamp(truckVelocity - speedDecayPerSecond * Time.deltaTime, 0, maxSpeed);
-            turningValue = Mathf.Clamp(turningValue - movement.x * Time.deltaTime * turnAnglePerSecond, -maxTurnAngle, maxTurnAngle);
+            // turningValue = Mathf.Clamp(turningValue - movement.x * Time.deltaTime * turnAnglePerSecond, -maxTurnAngle, maxTurnAngle);
+            // turningValue = Mathf.Clamp(turningValue - SteeringWheelControls.Instance.AngleToVertical * Time.deltaTime * turnAnglePerSecond, -maxTurnAngle, maxTurnAngle);
             RotateTruck(turningValue * Time.deltaTime);
             MoveTruckForward(truckVelocity * Time.deltaTime);
 
@@ -87,6 +90,7 @@ public class Movement : MonoBehaviour
                 PlayerPrefs.SetInt("Score", (int)totalScore);
                 PlayerPrefs.Save();
             }
+            DeathManager.Instance.CauseDeath("You crashed.", "Eyes on the road!");
         }
     }
 }
