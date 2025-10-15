@@ -48,6 +48,14 @@ public class DeathManager : MonoBehaviour
         DeathFlavorText = "\"" + flavorText + "\"";
         HelpText = helpText;
 
+        // High score
+        int oldScore = PlayerPrefs.GetInt("Score", 0);
+        if (Movement.totalScore > oldScore)
+        {
+            PlayerPrefs.SetInt("Score", (int)Movement.totalScore);
+            PlayerPrefs.Save();
+        }
+
         StartCoroutine(LoadDeathScene());
     }
 

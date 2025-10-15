@@ -23,21 +23,21 @@ public class Movement : MonoBehaviour
     public int brakingSpeed;
     public int speedDecayPerSecond;
     public int maxTurnAngle;
+    public float maxSteeringWheelAngle;
     public int turnAnglePerSecond;
     [Range(0, 1)]
     public float speedRequiredForMaxTurnSpeed;
-    private InputAction movementInput;
     private float truckVelocity;
     private float turningValue;
 
     // Score values
-    private float totalScore;
+    public static float totalScore;
     private bool crashed;
 
     // Save the "Move" input action
     void Start()
     {
-        movementInput = InputSystem.actions.FindAction("Move");
+        totalScore = 0;
     }
 
     // Process input to change forward velocity and turning, then rotate and move truck
@@ -50,15 +50,14 @@ public class Movement : MonoBehaviour
                 : truckVelocity + movement * Time.deltaTime * brakingSpeed, 0, maxSpeed);
             if (movement == 0)
                 truckVelocity = Mathf.Clamp(truckVelocity - speedDecayPerSecond * Time.deltaTime, 0, maxSpeed);
-            // turningValue = Mathf.Clamp(turningValue - movement.x * Time.deltaTime * turnAnglePerSecond, -maxTurnAngle, maxTurnAngle);
-            // turningValue = Mathf.Clamp(turningValue - SteeringWheelControls.Instance.AngleToVertical * Time.deltaTime * turnAnglePerSecond, -maxTurnAngle, maxTurnAngle);
+            // turningValue = Mathf.Clamp(SteeringWheelControls.Instance.AngleToVertical / maxSteeringWheelAngle, -maxSteeringWheelAngle, maxSteeringWheelAngle);
             RotateTruck(turningValue * Time.deltaTime);
             MoveTruckForward(truckVelocity * Time.deltaTime);
 
             // Updating and showing score
             totalScore += truckVelocity * Time.deltaTime;
             scoreDisplay.text = $"{(int)totalScore}m";
-            speedDial.rotation = Quaternion.Euler(-((truckVelocity / maxSpeed) * 180) + 90, 0, 0);
+            speedDial.rotation = Quaternion.Euler(-(truckVelocity / maxSpeed * 180) + 90, 0, 0);
         }
     }
 
@@ -87,13 +86,6 @@ public class Movement : MonoBehaviour
             // Crashed, game over!
             crashed = true;
             scoreDisplay.text += "\nCrashed!";
-            // All of this can likely be moved into wherever the Game Over screen logic is, assuming a reference to the current game's score exists
-            int oldScore = PlayerPrefs.GetInt("Score");
-            if (totalScore > oldScore)
-            {
-                PlayerPrefs.SetInt("Score", (int)totalScore);
-                PlayerPrefs.Save();
-            }
             DeathManager.Instance.CauseDeath("You crashed.", "Eyes on the road!");
         }
     }
