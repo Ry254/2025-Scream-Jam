@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.UI;
+using System;
 
 public class Movement : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class Movement : MonoBehaviour
     public Transform roadParent;
     public Transform truckTransform;
     public TextMeshPro scoreDisplay;
+    public Transform speedDial;
     public Pedal accelerator;
     public Pedal brake;
 
@@ -54,7 +57,8 @@ public class Movement : MonoBehaviour
 
             // Updating and showing score
             totalScore += truckVelocity * Time.deltaTime;
-            scoreDisplay.text = $"Distance: {(int)totalScore}m";
+            scoreDisplay.text = $"{(int)totalScore}m";
+            speedDial.rotation = Quaternion.Euler(-((truckVelocity / maxSpeed) * 180) + 90, 0, 0);
         }
     }
 

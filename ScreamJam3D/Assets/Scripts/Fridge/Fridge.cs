@@ -3,7 +3,10 @@ using UnityEngine;
 public class Fridge : MonoBehaviour
 {
     [SerializeField]
-    private int maxMeter = 100, decaySpeed = 5, meter;
+    private float maxMeter = 100, decaySpeed = 5, meter;
+
+    [SerializeField]
+    private Transform tempMeter;
 
     private int decayTime;
 
@@ -18,7 +21,7 @@ public class Fridge : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (decayTime == decaySpeed)
+        if (decayTime >= decaySpeed)
         {
             meter -= 1;
             decayTime = 0;
@@ -27,6 +30,8 @@ public class Fridge : MonoBehaviour
         {
             decayTime++;
         }
+
+        tempMeter.rotation = Quaternion.Euler(-((meter / maxMeter) * 180) + 90, 0, 0);
     }
 
     public void Click(int amount)
