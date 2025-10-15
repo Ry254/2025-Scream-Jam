@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 8571483352608222142}
   - component: {fileID: 3499022079166023338}
   - component: {fileID: 4461118437086454798}
+  - component: {fileID: 6176220938513272952}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -154,6 +155,23 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &6176220938513272952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623412675259603105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ad2cc479e45dcb4d8481746324e47b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flickerTimerTotalTime: 0.02
+  _numFlickers: 5
+  passiveOccilation: 1
+  occilationAmount: 0.35
+  occilationTime: 0.8
 --- !u!1 &802455721305911829
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +183,7 @@ GameObject:
   - component: {fileID: 7628168171854713169}
   - component: {fileID: 5098184817518452035}
   - component: {fileID: 810295949267282480}
+  - component: {fileID: 4248178301146577318}
   m_Layer: 0
   m_Name: Right light
   m_TagString: Untagged
@@ -198,9 +217,9 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2000
-  m_Range: 100
-  m_SpotAngle: 45.188797
+  m_Intensity: 8000
+  m_Range: 200
+  m_SpotAngle: 55.718216
   m_InnerSpotAngle: 0
   m_CookieSize: 10
   m_Shadows:
@@ -275,6 +294,23 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &4248178301146577318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802455721305911829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ad2cc479e45dcb4d8481746324e47b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flickerTimerTotalTime: 0.07
+  _numFlickers: 2
+  passiveOccilation: 0
+  occilationAmount: 0
+  occilationTime: 0
 --- !u!1 &943221230876489160
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,6 +395,7 @@ GameObject:
   - component: {fileID: 8690976743215508840}
   - component: {fileID: 7554124528747579494}
   - component: {fileID: 6447627911130547398}
+  - component: {fileID: 580132035419144959}
   m_Layer: 0
   m_Name: Point Light (1)
   m_TagString: Untagged
@@ -469,6 +506,23 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &580132035419144959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6022499221035581833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ad2cc479e45dcb4d8481746324e47b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flickerTimerTotalTime: 0.02
+  _numFlickers: 5
+  passiveOccilation: 1
+  occilationAmount: 0.35
+  occilationTime: 0.8
 --- !u!1 &7219472621669104110
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,6 +603,7 @@ GameObject:
   - component: {fileID: 1870812965548140037}
   - component: {fileID: 3674675570643860939}
   - component: {fileID: 9180469875267802193}
+  - component: {fileID: 3108485515427438624}
   m_Layer: 0
   m_Name: Left Light
   m_TagString: Untagged
@@ -582,9 +637,9 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2000
-  m_Range: 100
-  m_SpotAngle: 45
+  m_Intensity: 8000
+  m_Range: 200
+  m_SpotAngle: 55.718216
   m_InnerSpotAngle: 0
   m_CookieSize: 10
   m_Shadows:
@@ -659,6 +714,23 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &3108485515427438624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7820011329699461784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ad2cc479e45dcb4d8481746324e47b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flickerTimerTotalTime: 0.07
+  _numFlickers: 2
+  passiveOccilation: 0
+  occilationAmount: 0
+  occilationTime: 0
 --- !u!1 &8593228761634353994
 GameObject:
   m_ObjectHideFlags: 0
