@@ -6,14 +6,21 @@ public class RoadGeneration : MonoBehaviour
     // Fields
     [Header("Editable Values")]
     public int maxRoadPieces;
+    [Tooltip("WARNING: Going above 90 can lead to intersection!")]
+    public float maxRoadAngle;
+    public int maxRoadPiecesBehindPlayer;
 
     [Header("Scene Objects/Prefabs")]
     public Transform truckTransform;
     public Transform roadParent;
     public List<GameObject> roadPieces;
+    public GameObject checkpointPrefab;
 
     // Road pieces present in scene
     private List<GameObject> placedRoad;
+
+    // Current road direction, used to stop intersection
+    private float angle;
 
     // Place 1st road piece, create more as needed to fill list
     void Start()
@@ -44,11 +51,39 @@ public class RoadGeneration : MonoBehaviour
         // Pick a random new road piece and add it to the list of placed road pieces
         if (index != 0)
         {
-            GameObject newRoadPiece = Object.Instantiate(roadPieces[Random.Range(0, roadPieces.Count)], Vector3.zero, Quaternion.identity, roadParent);
+            int roadPieceIndex = Random.Range(0, roadPieces.Count);
+            GameObject newRoadPiece = Object.Instantiate(roadPieces[roadPieceIndex], Vector3.zero, Quaternion.identity, roadParent);
             Transform newRoadTransform = newRoadPiece.transform;
+            float turnAngle = 0;
+            switch (roadPieceIndex)
+            {
+                case 1:
+                    turnAngle = 65.5f;
+                    break;
+                case 2:
+                    turnAngle = 27.5f;
+                    break;
+            }
+            // Random turning or turning to avoid intersection
+            bool choice = Random.Range(0f, 1f) > 0.5f;
+            if (angle + turnAngle > maxRoadAngle)
+                choice = true;
+            if (angle - turnAngle < -maxRoadAngle)
+                choice = false;
+            if (roadPieceIndex > 0 && choice)
+            {
+                BoxCollider checkpoint = newRoadPiece.GetComponentInChildren<BoxCollider>();
+                Vector3 checkpointPosition = Vector3.Scale(checkpoint.transform.position, new Vector3(1, 1, -1));
+                Quaternion checkpointRotation = checkpoint.transform.rotation;
+                Object.Destroy(checkpoint.gameObject);
+                newRoadTransform.localScale = new Vector3(1, 1, -1);
+                turnAngle *= -1;
+                Component.Instantiate(checkpointPrefab, checkpointPosition, checkpointRotation, newRoadTransform);
+            }
             placedRoad.Add(newRoadPiece);
+            angle += turnAngle;
             // Overflow, remove last road
-            if (placedRoad.Count > maxRoadPieces && index > 0)
+            if (placedRoad.Count > maxRoadPieces && index > maxRoadPiecesBehindPlayer - 1)
             {
                 GameObject roadToDelete = placedRoad[0];
                 placedRoad.RemoveAt(0);

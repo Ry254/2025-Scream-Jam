@@ -8,14 +8,17 @@ TagManager:
   - Spawn
   - Connector
   - Truck
+  - Death Text
+  - Checkpoint
+  - Road
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - OutlinedObjects
   - Water
   - UI
-  - 
+  - Road
   - 
   - 
   - 
