@@ -35,7 +35,7 @@ public class SteeringWheelControls : MonoBehaviour, IMouseInteract
     
     // Lazy Singleton
     [HideInInspector]
-    public SteeringWheelControls Instance;
+    public static SteeringWheelControls Instance;
     void Awake() => Instance ??= this;
 
     private float originalDirection;
