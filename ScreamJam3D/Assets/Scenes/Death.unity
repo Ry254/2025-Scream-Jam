@@ -839,6 +839,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: truck
       objectReference: {fileID: 0}
+    - target: {fileID: 3708108287461733702, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027354817474116752, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: roadParent
+      value: 
+      objectReference: {fileID: 1780661667}
     - target: {fileID: 8894386423671340792, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.317396
@@ -885,7 +893,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8894386423671340792, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1099413598}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7570069661691281510, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
 --- !u!4 &1071372345 stripped
 Transform:
@@ -1514,6 +1525,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23522fff64364f04c8426ba3b994a797, type: 3}
+--- !u!4 &1780661667 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 23522fff64364f04c8426ba3b994a797, type: 3}
+  m_PrefabInstance: {fileID: 1780661666}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1807200698
 GameObject:
   m_ObjectHideFlags: 0

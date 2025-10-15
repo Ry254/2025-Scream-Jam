@@ -509,6 +509,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 34.255
       objectReference: {fileID: 0}
+    - target: {fileID: 980795547803674813, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2834267300664978506, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2843655571158604991, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       propertyPath: m_Name
       value: truck
@@ -553,6 +561,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 22.883
       objectReference: {fileID: 0}
+    - target: {fileID: 4550060444369101500, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027354817474116752, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: roadParent
+      value: 
+      objectReference: {fileID: 806411856}
     - target: {fileID: 7230756998063559114, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.052875
@@ -592,6 +608,10 @@ PrefabInstance:
     - target: {fileID: 7230756998063559114, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 17.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8710598075155805697, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: m_Camera
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8894386423671340792, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -634,33 +654,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8966879996434643040, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4828196634799074407, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 185474970}
     - targetCorrespondingSourceObject: {fileID: 7570069661691281510, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
---- !u!1 &185474969 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4828196634799074407, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
-  m_PrefabInstance: {fileID: 185474967}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &185474970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 185474969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9605f6aa2d59034dbe820e9c26b7ba5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &186184814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1408,10 +1409,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 379374894}
-  - component: {fileID: 379374896}
   - component: {fileID: 379374899}
   - component: {fileID: 379374898}
   - component: {fileID: 379374897}
+  - component: {fileID: 379374900}
   m_Layer: 0
   m_Name: High Score
   m_TagString: Untagged
@@ -1438,14 +1439,6 @@ RectTransform:
   m_AnchoredPosition: {x: 93.8, y: -290.6}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &379374896
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 379374893}
-  m_CullTransparentMesh: 1
 --- !u!114 &379374897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1598,6 +1591,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 379374897}
+--- !u!222 &379374900
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379374893}
+  m_CullTransparentMesh: 1
 --- !u!1 &393859244
 GameObject:
   m_ObjectHideFlags: 0
@@ -3087,6 +3088,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 767540781}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &806411856 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 23522fff64364f04c8426ba3b994a797, type: 3}
+  m_PrefabInstance: {fileID: 3922573119062640784}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &842666054
 GameObject:
   m_ObjectHideFlags: 0
@@ -4238,7 +4244,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1339773372}
   - component: {fileID: 1339773371}
-  - component: {fileID: 1339773370}
   - component: {fileID: 1339773373}
   m_Layer: 0
   m_Name: Main Camera
@@ -4247,14 +4252,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1339773370
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1339773369}
-  m_Enabled: 1
 --- !u!20 &1339773371
 Camera:
   m_ObjectHideFlags: 0
@@ -5166,7 +5163,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -765.00006, y: -361}
+  m_AnchoredPosition: {x: -765.0003, y: -361}
   m_SizeDelta: {x: -798.5999, y: -498.59998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1599982236
@@ -5186,7 +5183,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 185474970}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: OutlineHover, Assembly-CSharp
           m_MethodName: OnHoverEnter
           m_Mode: 1
@@ -5202,7 +5199,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 185474970}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: OutlineHover, Assembly-CSharp
           m_MethodName: OnHoverExit
           m_Mode: 1
