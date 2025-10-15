@@ -9,15 +9,18 @@ public class SwitchFrame : MonoBehaviour, IMouseInteract
 
     private bool _touchBuffer = true;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        bounds = ConvertToPercentBounds(bounds);
-
         if (targetFrame == PlayerLookState.None)
         {
             Destroy(this);
         }
+    }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        bounds = ConvertToPercentBounds(bounds);
     }
 
     // Update is called once per frame
@@ -33,7 +36,8 @@ public class SwitchFrame : MonoBehaviour, IMouseInteract
 
     public void OnMouseMove(Vector2 mousePos)
     {
-
+        if (!enabled) return;
+        
         if (bounds.minX > mousePos.x || bounds.maxX < mousePos.x || bounds.minZ > mousePos.y || bounds.maxZ < mousePos.y)
         {
             _touchBuffer = false;

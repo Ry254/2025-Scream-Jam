@@ -16,6 +16,8 @@ public class CameraManager : MonoBehaviour
         get { return _currentLookState; }
         set
         {
+            if (value == PlayerLookState.None) return;
+
             PreviousLookState = _currentLookState;
             _currentLookState = value;
 
@@ -99,6 +101,11 @@ public class CameraManager : MonoBehaviour
             {
                 foreach (var gameObject in frame.bounds) // Associated gameObjects
                 {
+                    if (!gameObject.activeSelf)
+                    {
+                        Debug.Log("Object disabled");
+                        continue;
+                    }
                     foreach (var boundary in gameObject.GetComponents<IMouseInteract>()) // GameObjects valid components
                     {
                         mouseInteracts.Add(boundary);
