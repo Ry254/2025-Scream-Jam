@@ -33,6 +33,7 @@ public class SwitchFrame : MonoBehaviour, IMouseInteract
 
     public void OnMouseMove(Vector2 mousePos)
     {
+
         if (bounds.minX > mousePos.x || bounds.maxX < mousePos.x || bounds.minZ > mousePos.y || bounds.maxZ < mousePos.y)
         {
             _touchBuffer = false;
