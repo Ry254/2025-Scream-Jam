@@ -23,6 +23,7 @@ public class LocalAudioManager : MonoBehaviour
     public AudioClip JeromeSpawningSFX;
 
     private bool _isJeromeActive = false;
+    
     public bool IsJeromeActive
     {
         get => _isJeromeActive;

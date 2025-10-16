@@ -36,7 +36,7 @@ public class LightFlickerController : MonoBehaviour
         _passiveHoverTimer = 0;
         occilationFactor = occilationAmount * _startingIntensity;
 
-        InputSystem.actions["Move"].performed += context => StartFlicker(this, new EventArgs());
+        //InputSystem.actions["Move"].performed += context => StartFlicker(this, new EventArgs());
     }
 
     private void StartFlicker(object sender, EventArgs e)
