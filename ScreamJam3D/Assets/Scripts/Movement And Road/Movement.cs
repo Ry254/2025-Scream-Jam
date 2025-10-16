@@ -67,7 +67,7 @@ public class Movement : MonoBehaviour
             // Updating and showing score
             totalScore += truckVelocity * Time.deltaTime;
             scoreDisplay.text = $"{(int)totalScore}m";
-            speedDial.rotation = Quaternion.Euler(-(truckVelocity / maxSpeed * 180) + 90, 0, 0);
+            speedDial.localRotation = Quaternion.Euler(0, 0, -(truckVelocity / maxSpeed * 180) + 90);
         }
     }
 
