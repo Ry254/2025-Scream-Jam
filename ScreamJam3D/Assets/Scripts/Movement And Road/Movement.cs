@@ -28,6 +28,7 @@ public class Movement : MonoBehaviour
     [Range(0, 1)]
     public float speedRequiredForMaxTurnSpeed;
     private float truckVelocity;
+    private float _velocityOld = 0;
     private float turningValue;
 
     // Score values
@@ -46,6 +47,7 @@ public class Movement : MonoBehaviour
         if (!crashed)
         {
             float movement = accelerator.Value + brake.Value;
+            _velocityOld = truckVelocity;
             truckVelocity = Mathf.Clamp(movement > 0 ? truckVelocity + movement * Time.deltaTime * speedPerSecond
                 : truckVelocity + movement * Time.deltaTime * brakingSpeed, 0, maxSpeed);
             if (movement == 0)
@@ -54,6 +56,13 @@ public class Movement : MonoBehaviour
             RotateTruck(turningValue * Time.deltaTime);
             MoveTruckForward(truckVelocity * Time.deltaTime);
 
+            // Changeing audio volume
+            if (_velocityOld != truckVelocity)
+            {
+                float proportion = truckVelocity / maxSpeed;
+                LocalAudioManager.Instance.TruckAmbianceVolume = proportion * proportion;
+            }
+            
             // Updating and showing score
             totalScore += truckVelocity * Time.deltaTime;
             scoreDisplay.text = $"{(int)totalScore}m";
