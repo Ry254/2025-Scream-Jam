@@ -631,6 +631,7 @@ MonoBehaviour:
   - direction: 2
     bounds:
     - {fileID: 1434433217}
+    - {fileID: 820761067}
   - direction: 3
     bounds:
     - {fileID: 1236214398}
@@ -658,6 +659,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1153714670}
+  - {fileID: 820761069}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &648633816
@@ -902,6 +904,55 @@ MonoBehaviour:
     maxX: 5
     maxZ: 90
   targetFrame: 3
+--- !u!1 &820761067
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 820761069}
+  - component: {fileID: 820761068}
+  m_Layer: 0
+  m_Name: Steering Wheel Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &820761068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820761067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebba11210c4e5f849b712eb2f15e5388, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounds:
+    Center: {x: 631, y: 57}
+    innerRadius: 0
+    outerRadius: 197
+  _resetTime: 0.1
+--- !u!4 &820761069
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820761067}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 648633815}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1153714669
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,28 +990,6 @@ Transform:
   - {fileID: 1987553074}
   m_Father: {fileID: 648633815}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1209358916 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4828196634799074407, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
-  m_PrefabInstance: {fileID: 1973180722}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1209358921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209358916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebba11210c4e5f849b712eb2f15e5388, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bounds:
-    Center: {x: 0, y: 0}
-    innerRadius: 0
-    outerRadius: 0
-  _resetTime: 0
 --- !u!1 &1236214398
 GameObject:
   m_ObjectHideFlags: 0
@@ -2020,9 +2049,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 164161642}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4828196634799074407, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1209358921}
     - targetCorrespondingSourceObject: {fileID: 7570069661691281510, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}

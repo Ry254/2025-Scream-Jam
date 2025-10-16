@@ -54,8 +54,6 @@ public class SteeringWheelControls : MonoBehaviour, IMouseInteract
     void Start()
     {
         InputSystem.actions["Attack"].canceled += context => ReleaseWheel();
-
-        bounds.Center = new Bounds2D(0, 0, Camera.main.scaledPixelWidth, Camera.main.scaledPixelHeight).Size / 2;
     }
 
     public void OnPress(Vector2 mousePos)
