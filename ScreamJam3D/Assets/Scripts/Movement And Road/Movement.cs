@@ -15,14 +15,14 @@ public class Movement : MonoBehaviour
     public Transform speedDial;
     public Pedal accelerator;
     public Pedal brake;
+    private Transform theCamera;
 
     // Movement variables
     [Header("Driving Variables")]
-    public int maxSpeed;
-    public int speedPerSecond;
-    public int brakingSpeed;
-    public int speedDecayPerSecond;
-    public int maxTurnAngle;
+    public float maxSpeed;
+    public float speedPerSecond;
+    public float brakingSpeed;
+    public float speedDecayPerSecond;
     public float maxSteeringWheelAngle;
     public int turnAnglePerSecond;
     [Range(0, 1)]
@@ -36,9 +36,10 @@ public class Movement : MonoBehaviour
     private bool crashed;
 
     // Save the "Move" input action
-    void Start()
+    void Awake()
     {
         totalScore = 0;
+        theCamera = Camera.allCameras[0].transform;
     }
 
     // Process input to change forward velocity and turning, then rotate and move truck
@@ -52,15 +53,14 @@ public class Movement : MonoBehaviour
                 : truckVelocity + movement * Time.deltaTime * brakingSpeed, 0, maxSpeed);
             if (movement == 0)
                 truckVelocity = Mathf.Clamp(truckVelocity - speedDecayPerSecond * Time.deltaTime, 0, maxSpeed);
-            turningValue = Mathf.Clamp(SteeringWheelControls.Instance.AngleToVertical / maxSteeringWheelAngle, -maxSteeringWheelAngle, maxSteeringWheelAngle);
-            RotateTruck(turningValue * Time.deltaTime);
+            turningValue = Mathf.Clamp(SteeringWheelControls.Instance.AngleToVertical / maxSteeringWheelAngle, -1, 1);
+            RotateTruck(-turningValue * Time.deltaTime);
             MoveTruckForward(truckVelocity * Time.deltaTime);
 
             // Changeing audio volume
             if (_velocityOld != truckVelocity)
             {
                 float proportion = Mathf.Clamp(truckVelocity, 0, 70) / 70f;
-                Debug.Log(truckVelocity);
                 LocalAudioManager.Instance.TruckAmbianceVolume = proportion;
             }
             
@@ -86,7 +86,7 @@ public class Movement : MonoBehaviour
     /// <param name="speedValue">How quickly to turn/How many units to turn the world</param>
     public void RotateTruck(float turningValue)
     {
-        roadParent.RotateAround(truckTransform.position, Vector3.up, turningValue * Mathf.Clamp(truckVelocity / (maxSpeed * speedRequiredForMaxTurnSpeed), 0, 1));
+        roadParent.RotateAround(theCamera.position, Vector3.up, turningValue * Mathf.Clamp(truckVelocity / (maxSpeed * speedRequiredForMaxTurnSpeed) * turnAnglePerSecond, 0, turnAnglePerSecond));
     }
 
     private void OnTriggerEnter(Collider collider)

@@ -936,7 +936,7 @@ MonoBehaviour:
   bounds:
     Center: {x: 631, y: 57}
     innerRadius: 0
-    outerRadius: 197
+    outerRadius: 300
   _resetTime: 0.1
 --- !u!4 &820761069
 Transform:
@@ -1982,6 +1982,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 400111384830093092, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0298
+      objectReference: {fileID: 0}
+    - target: {fileID: 400111384830093092, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9988165
+      objectReference: {fileID: 0}
+    - target: {fileID: 400111384830093092, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.046519693
+      objectReference: {fileID: 0}
+    - target: {fileID: 400111384830093092, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.0025770215
+      objectReference: {fileID: 0}
+    - target: {fileID: 400111384830093092, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.013964315
+      objectReference: {fileID: 0}
+    - target: {fileID: 400111384830093092, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.0182
+      objectReference: {fileID: 0}
+    - target: {fileID: 400111384830093092, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.1897
+      objectReference: {fileID: 0}
+    - target: {fileID: 400111384830093092, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 1.619
+      objectReference: {fileID: 0}
     - target: {fileID: 1321834374076310452, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       propertyPath: awakeTime
       value: 10000
@@ -1994,14 +2026,50 @@ PrefabInstance:
       propertyPath: sleepTime
       value: 30000
       objectReference: {fileID: 0}
+    - target: {fileID: 2373548482092706882, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 2843655571158604991, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       propertyPath: m_Name
       value: truck
       objectReference: {fileID: 0}
     - target: {fileID: 5027354817474116752, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: maxSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027354817474116752, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       propertyPath: roadParent
       value: 
       objectReference: {fileID: 576289285}
+    - target: {fileID: 5027354817474116752, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: brakingSpeed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027354817474116752, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: maxTurnAngle
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027354817474116752, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: speedPerSecond
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027354817474116752, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: turnAnglePerSecond
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027354817474116752, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: speedDecayPerSecond
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027354817474116752, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: maxSteeringWheelAngle
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027354817474116752, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: speedRequiredForMaxTurnSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8894386423671340792, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.6400867
