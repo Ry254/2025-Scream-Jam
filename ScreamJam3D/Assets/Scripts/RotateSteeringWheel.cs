@@ -12,8 +12,11 @@ public class RotateSteeringWheel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(transform.position, transform.up, Color.green);
-        transform.localRotation = _startingRotation;
-        transform.RotateAround(transform.position, transform.up, SteeringWheelControls.Instance.AngleToVertical);
+        if (SteeringWheelControls.Instance != null)
+        {
+            Debug.DrawRay(transform.position, transform.up, Color.green);
+            transform.localRotation = _startingRotation;
+            transform.RotateAround(transform.position, transform.up, SteeringWheelControls.Instance.AngleToVertical);
+        }
     }
 }
