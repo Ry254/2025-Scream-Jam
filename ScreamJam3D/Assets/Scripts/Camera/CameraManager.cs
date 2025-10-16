@@ -112,11 +112,9 @@ public class CameraManager : MonoBehaviour
                         boundary.OnToggleOn();
                     }
                 }
-
                 return mouseInteracts.ToArray();
             }
         }
-
         return mouseInteracts.ToArray();
     }
 }

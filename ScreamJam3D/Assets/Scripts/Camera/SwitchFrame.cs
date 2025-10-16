@@ -38,30 +38,52 @@ public class SwitchFrame : MonoBehaviour, IMouseInteract
     {
         if (!enabled) return;
 
-        bool canRotate = true;
-
-        if (SteeringWheelControls.Instance != null)
+        if (PlayerPrefs.GetInt("ClickRotate", 0) == 0)
         {
-            if (SteeringWheelControls.Instance.AngleToVertical != 0)
-                canRotate = false;
-        }
+            bool canRotate = true;
 
-        if (canRotate)
-        {
-            if (bounds.minX > mousePos.x || bounds.maxX < mousePos.x || bounds.minZ > mousePos.y || bounds.maxZ < mousePos.y)
+            if (SteeringWheelControls.Instance != null)
             {
-                _touchBuffer = false;
+                if (SteeringWheelControls.Instance.AngleToVertical != 0)
+                    canRotate = false;
             }
-            else if (!_touchBuffer)
+
+            if (canRotate)
             {
-                CameraManager.Instance.CurrentLookState = targetFrame;
+                if (bounds.minX > mousePos.x || bounds.maxX < mousePos.x || bounds.minZ > mousePos.y || bounds.maxZ < mousePos.y)
+                {
+                    _touchBuffer = false;
+                }
+                else if (!_touchBuffer)
+                {
+                    CameraManager.Instance.CurrentLookState = targetFrame;
+                }
             }
         }
     }
 
     public void OnPress(Vector2 mousePos)
     {
+        if (!enabled) return;
 
+        if (PlayerPrefs.GetInt("ClickRotate", 0) == 1)
+        {
+            bool canRotate = true;
+
+            if (SteeringWheelControls.Instance != null)
+            {
+                if (SteeringWheelControls.Instance.AngleToVertical != 0)
+                    canRotate = false;
+            }
+
+            if (canRotate)
+            {
+                if (!(bounds.minX > mousePos.x || bounds.maxX < mousePos.x || bounds.minZ > mousePos.y || bounds.maxZ < mousePos.y))
+                {
+                    CameraManager.Instance.CurrentLookState = targetFrame;
+                }
+            }
+        }
     }
 
     public void OnDrawGizmosSelected()
