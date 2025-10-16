@@ -16,6 +16,11 @@ public class Movement : MonoBehaviour
     public Pedal accelerator;
     public Pedal brake;
     private Transform theCamera;
+    public AudioSource SkidMarks;
+    public AnimationCurve Translator;
+
+    private float desiredVolume;
+
 
     // Movement variables
     [Header("Driving Variables")]
@@ -53,7 +58,13 @@ public class Movement : MonoBehaviour
                 : truckVelocity + movement * Time.deltaTime * brakingSpeed, 0, maxSpeed);
             if (movement == 0)
                 truckVelocity = Mathf.Clamp(truckVelocity - speedDecayPerSecond * Time.deltaTime, 0, maxSpeed);
+
+            float oldTurningValue = turningValue;
             turningValue = Mathf.Clamp(SteeringWheelControls.Instance.AngleToVertical / maxSteeringWheelAngle, -1, 1);
+
+            desiredVolume = Translator.Evaluate(Mathf.Abs(turningValue - oldTurningValue)) * Mathf.Clamp(truckVelocity / (maxSpeed * speedRequiredForMaxTurnSpeed), 0, 1);
+            SkidMarks.volume = Mathf.Lerp(SkidMarks.volume, desiredVolume, 0.3f);
+
             RotateTruck(-turningValue * Time.deltaTime);
             MoveTruckForward(truckVelocity * Time.deltaTime);
 

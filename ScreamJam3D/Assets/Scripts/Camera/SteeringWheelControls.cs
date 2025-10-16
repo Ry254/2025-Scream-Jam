@@ -59,7 +59,6 @@ public class SteeringWheelControls : MonoBehaviour, IMouseInteract
 
     public void OnPress(Vector2 mousePos)
     {
-        Debug.Log(mousePos.x + "," + mousePos.y + " || " + bounds.Center.x + "," + bounds.Center.y + " || " + (bounds.Center-mousePos).magnitude);
         if (!bounds.Contains(mousePos, out Vector2 direction)) return;
 
         StopCoroutine(ResetRotation());
