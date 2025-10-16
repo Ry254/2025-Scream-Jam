@@ -7,7 +7,6 @@ public class RotateSteeringWheel : MonoBehaviour
     void Start()
     {
         _startingRotation = transform.localRotation;
-        
     }
 
     // Update is called once per frame

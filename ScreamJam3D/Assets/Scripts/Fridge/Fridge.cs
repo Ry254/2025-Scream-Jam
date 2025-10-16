@@ -33,8 +33,6 @@ public class Fridge : MonoBehaviour
 
         tempMeter.rotation = Quaternion.Euler(-((meter / maxMeter) * 90) + 90, 0, 0);
 
-        Debug.Log(meter);
-
         if (meter == 0)
         {
             DeathManager.Instance.CauseDeath("The freezer got too hot!", "Perhaps a bit too toasty...");
