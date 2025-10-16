@@ -2034,6 +2034,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: truck
       objectReference: {fileID: 0}
+    - target: {fileID: 2925070462583328317, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: maxMeter
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5027354817474116752, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       propertyPath: maxSpeed
       value: 50

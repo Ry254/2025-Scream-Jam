@@ -65,11 +65,6 @@ public class SteeringWheelControls : MonoBehaviour, IMouseInteract
         originalDirection = GetAngleDeg(direction);
     }
 
-    public void Update()
-    {
-        Debug.Log(AngleToVertical);
-    }
-
     public void OnToggleOn()
     {
         ReleaseWheel();
