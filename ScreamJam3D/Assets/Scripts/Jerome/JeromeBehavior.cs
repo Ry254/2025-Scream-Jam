@@ -70,6 +70,10 @@ public class JeromeBehavior : MonoBehaviour
         }
         else if (look == PlayerLookState.RightWindow && awakeTimer.IsRunning)
         {
+            awakeTimer.Stop();
+            sleepTimer.Stop();
+            wait = false;
+            mesh.enabled = false;
             DeathManager.Instance.CauseDeath("Jerome was awake.", "maybe sing some lullabys next time.");
         }
         currentLook = look;

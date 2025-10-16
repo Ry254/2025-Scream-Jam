@@ -98,7 +98,10 @@ public class SteeringWheelControls : MonoBehaviour, IMouseInteract
         originalDirection = 0f;
         IsWheelMoving = false;
 
-        StartCoroutine(ResetRotation());
+        if (SteeringWheelControls.Instance != null)
+        {
+            StartCoroutine(ResetRotation());
+        }
     }
 
     public IEnumerator ResetRotation()

@@ -31,7 +31,7 @@ public class Fridge : MonoBehaviour
             decayTime++;
         }
 
-        tempMeter.rotation = Quaternion.Euler(-((meter / maxMeter) * 180) + 90, 0, 0);
+        tempMeter.rotation = Quaternion.Euler(-((meter / maxMeter) * 90) + 90, 0, 0);
     }
 
     public void Click(int amount)
