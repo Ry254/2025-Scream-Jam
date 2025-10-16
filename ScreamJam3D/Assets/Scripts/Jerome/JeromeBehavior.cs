@@ -7,7 +7,9 @@ public class JeromeBehavior : MonoBehaviour
 
     //time in milliseconds
     [SerializeField]
-    private int sleepTime = 10000, awakeTime = 10000;
+    private int sleepTimeMin = 10000, sleepTimeMax = 30000, awakeTimeMin = 5000, awakeTimeMax = 15000;
+
+    private int sleepTimeActual = 0, awakeTimeActual = 0;
 
     [SerializeField]
     private SkinnedMeshRenderer mesh;
@@ -21,15 +23,16 @@ public class JeromeBehavior : MonoBehaviour
         CameraManager.Instance.OnCameraChange += Look;
 
         mesh.enabled = false;
-
-        sleepTimer.Restart();
         awakeTimer.Stop();
+        sleepTimer.Restart();
+        sleepTimeActual = Random.Range(sleepTimeMin, sleepTimeMax);
     }
+
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (sleepTimer.ElapsedMilliseconds >= sleepTime && sleepTimer.IsRunning)
+        if (sleepTimer.ElapsedMilliseconds >= sleepTimeActual && sleepTimer.IsRunning)
         {
             if (!CameraManager.Instance.LookingRightOfWheel)
             {
@@ -37,7 +40,7 @@ public class JeromeBehavior : MonoBehaviour
             }
         }
 
-        if (awakeTimer.ElapsedMilliseconds >= awakeTime && awakeTimer.IsRunning)
+        if (awakeTimer.ElapsedMilliseconds >= awakeTimeActual && awakeTimer.IsRunning)
         {
             DespawnJerome();
         }
@@ -50,6 +53,7 @@ public class JeromeBehavior : MonoBehaviour
         awakeTimer.Restart();
         LightFlickerController.Flicker();
         LocalAudioManager.Instance.IsJeromeActive = true;
+        awakeTimeActual = Random.Range(awakeTimeMin, awakeTimeMax);
     }
 
     private void DespawnJerome()
@@ -59,6 +63,7 @@ public class JeromeBehavior : MonoBehaviour
         sleepTimer.Restart();
         LightFlickerController.Flicker();
         LocalAudioManager.Instance.IsJeromeActive = false;
+        sleepTimeActual = Random.Range(sleepTimeMin, sleepTimeMax);
     }
 
     public void Look(PlayerLookState look)

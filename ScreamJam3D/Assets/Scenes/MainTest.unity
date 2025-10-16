@@ -935,9 +935,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounds:
-    Center: {x: 300, y: 40}
+    Center: {x: 44.2, y: 6.67}
     innerRadius: 1
-    outerRadius: 100
+    outerRadius: 16
   _resetTime: 0.1
 --- !u!4 &820761069
 Transform:
@@ -2017,7 +2017,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1321834374076310452, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       propertyPath: awakeTime
-      value: 2000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 1321834374076310452, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       propertyPath: m_Enabled
@@ -2025,7 +2025,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1321834374076310452, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       propertyPath: sleepTime
-      value: 2000
+      value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 2373548482092706882, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -2138,40 +2138,15 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 164161642}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4828196634799074407, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1973180725}
     - targetCorrespondingSourceObject: {fileID: 7570069661691281510, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
---- !u!1 &1973180723 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4828196634799074407, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
-  m_PrefabInstance: {fileID: 1973180722}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1973180724 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8894386423671340792, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
   m_PrefabInstance: {fileID: 1973180722}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1973180725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1973180723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebba11210c4e5f849b712eb2f15e5388, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bounds:
-    Center: {x: 300, y: 40}
-    innerRadius: 1
-    outerRadius: 10000
-  _resetTime: 0.1
 --- !u!1 &1987553073
 GameObject:
   m_ObjectHideFlags: 0
