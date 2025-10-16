@@ -85,6 +85,9 @@ public class JeromeBehavior : MonoBehaviour
 
     public void OnDestroy()
     {
-        CameraManager.Instance.OnCameraChange -= Look;
+        if (CameraManager.Instance != null)
+        {
+            CameraManager.Instance.OnCameraChange -= Look;
+        }
     }
 }
