@@ -59,8 +59,9 @@ public class Movement : MonoBehaviour
             // Changeing audio volume
             if (_velocityOld != truckVelocity)
             {
-                float proportion = truckVelocity / maxSpeed;
-                LocalAudioManager.Instance.TruckAmbianceVolume = proportion * proportion;
+                float proportion = Mathf.Clamp(truckVelocity, 0, 70) / 70f;
+                Debug.Log(truckVelocity);
+                LocalAudioManager.Instance.TruckAmbianceVolume = proportion;
             }
             
             // Updating and showing score
