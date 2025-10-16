@@ -632,16 +632,16 @@ MonoBehaviour:
     bounds:
     - {fileID: 1434433217}
     - {fileID: 820761067}
-  - direction: 3
-    bounds:
-    - {fileID: 1236214398}
   - direction: 4
     bounds:
+    - {fileID: 1236214398}
+  - direction: 8
+    bounds:
     - {fileID: 1987553073}
-  - direction: 5
+  - direction: 16
     bounds:
     - {fileID: 792894810}
-  - direction: 6
+  - direction: 32
     bounds:
     - {fileID: 1337136703}
   IsInPlay: 1
@@ -903,7 +903,7 @@ MonoBehaviour:
     minZ: 10
     maxX: 5
     maxZ: 90
-  targetFrame: 3
+  targetFrame: 4
 --- !u!1 &820761067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,7 +1078,7 @@ MonoBehaviour:
     minZ: 10
     maxX: 100
     maxZ: 90
-  targetFrame: 5
+  targetFrame: 16
 --- !u!114 &1236214403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1385,7 +1385,7 @@ MonoBehaviour:
     minZ: 90
     maxX: 95
     maxZ: 100
-  targetFrame: 6
+  targetFrame: 32
 --- !u!114 &1434433220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1403,7 +1403,7 @@ MonoBehaviour:
     minZ: 0
     maxX: 95
     maxZ: 10
-  targetFrame: 4
+  targetFrame: 8
 --- !u!114 &1434433221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1421,7 +1421,7 @@ MonoBehaviour:
     minZ: 10
     maxX: 100
     maxZ: 90
-  targetFrame: 3
+  targetFrame: 4
 --- !u!114 &1434433222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2016,7 +2016,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1321834374076310452, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       propertyPath: awakeTime
-      value: 10000
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 1321834374076310452, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       propertyPath: m_Enabled
@@ -2024,7 +2024,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1321834374076310452, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       propertyPath: sleepTime
-      value: 30000
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 2373548482092706882, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -2073,6 +2073,22 @@ PrefabInstance:
     - target: {fileID: 5027354817474116752, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       propertyPath: speedRequiredForMaxTurnSpeed
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689449901955681431, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: rotations.Array.data[2].frame
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689449901955681431, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: rotations.Array.data[3].frame
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689449901955681431, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: rotations.Array.data[4].frame
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689449901955681431, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: rotations.Array.data[5].frame
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 8894386423671340792, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       propertyPath: m_LocalPosition.x

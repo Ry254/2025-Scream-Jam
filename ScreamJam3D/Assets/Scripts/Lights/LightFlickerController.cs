@@ -5,7 +5,13 @@ using UnityEngine.InputSystem;
 
 public class LightFlickerController : MonoBehaviour
 {
+    public static void Flicker()
+    {
+        FlickerLights?.Invoke(new object(), new EventArgs());
+    }
     public static EventHandler FlickerLights;
+    private static bool _valuesReset = false;
+
     private byte _state = 0;
     /*
     0 - Awaiting flicker
@@ -26,17 +32,29 @@ public class LightFlickerController : MonoBehaviour
     public float occilationTime = 0f;
     private float occilationFactor;
 
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // Clear all the values on start up
+        if (!_valuesReset)
+        {
+            //FlickerLights = null;
+            _valuesReset = true;
+        }
+
         _light = GetComponent<Light>();
         _startingIntensity = _light.intensity;
         FlickerLights += StartFlicker;
         _state = 0;
         _passiveHoverTimer = 0;
         occilationFactor = occilationAmount * _startingIntensity;
+    }
 
-        //InputSystem.actions["Move"].performed += context => StartFlicker(this, new EventArgs());
+    private void OnDestroy()
+    {
+        FlickerLights -= StartFlicker;
     }
 
     private void StartFlicker(object sender, EventArgs e)

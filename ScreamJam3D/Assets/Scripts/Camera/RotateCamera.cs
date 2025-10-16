@@ -40,7 +40,7 @@ public class RotateCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log(CameraManager.Instance.CameraLookState);
     }
 
     void OnDestroy()
@@ -56,6 +56,8 @@ public class RotateCamera : MonoBehaviour
 
     public IEnumerator Rotation(PlayerLookState state)
     {
+        CameraManager.Instance.CameraLookState |= state;
+
         Transform t = Camera.main.transform;
         Quaternion start = t.localRotation;
         Quaternion end = frameRotations[state];
@@ -76,5 +78,6 @@ public class RotateCamera : MonoBehaviour
         }
 
         t.localRotation = end;
+        CameraManager.Instance.CameraLookState = state;
     }
 }
