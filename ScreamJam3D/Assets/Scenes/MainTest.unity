@@ -887,6 +887,28 @@ Transform:
   - {fileID: 1987553074}
   m_Father: {fileID: 648633815}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1209358916 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4828196634799074407, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+  m_PrefabInstance: {fileID: 1973180722}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1209358921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209358916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebba11210c4e5f849b712eb2f15e5388, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounds:
+    Center: {x: -5.640087, y: -0.4999998}
+    innerRadius: 0
+    outerRadius: 10000
+  _resetTime: 5
 --- !u!1 &1236214398
 GameObject:
   m_ObjectHideFlags: 0
@@ -1493,6 +1515,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 43738806563663980, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 43738806563663980, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.069
+      objectReference: {fileID: 0}
     - target: {fileID: 2843655571158604991, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       propertyPath: m_Name
       value: truck
@@ -1566,6 +1596,9 @@ PrefabInstance:
       insertIndex: 3
       addedObject: {fileID: 2036164318}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4828196634799074407, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1209358921}
     - targetCorrespondingSourceObject: {fileID: 7570069661691281510, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}

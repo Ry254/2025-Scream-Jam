@@ -50,7 +50,7 @@ public class Movement : MonoBehaviour
                 : truckVelocity + movement * Time.deltaTime * brakingSpeed, 0, maxSpeed);
             if (movement == 0)
                 truckVelocity = Mathf.Clamp(truckVelocity - speedDecayPerSecond * Time.deltaTime, 0, maxSpeed);
-            // turningValue = Mathf.Clamp(SteeringWheelControls.Instance.AngleToVertical / maxSteeringWheelAngle, -maxSteeringWheelAngle, maxSteeringWheelAngle);
+            turningValue = Mathf.Clamp(SteeringWheelControls.Instance.AngleToVertical / maxSteeringWheelAngle, -maxSteeringWheelAngle, maxSteeringWheelAngle);
             RotateTruck(turningValue * Time.deltaTime);
             MoveTruckForward(truckVelocity * Time.deltaTime);
 
