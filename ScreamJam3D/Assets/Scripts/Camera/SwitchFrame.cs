@@ -37,20 +37,31 @@ public class SwitchFrame : MonoBehaviour, IMouseInteract
     public void OnMouseMove(Vector2 mousePos)
     {
         if (!enabled) return;
-        
-        if (bounds.minX > mousePos.x || bounds.maxX < mousePos.x || bounds.minZ > mousePos.y || bounds.maxZ < mousePos.y)
+
+        bool canRotate = true;
+
+        if (SteeringWheelControls.Instance != null)
         {
-            _touchBuffer = false;
+            if (SteeringWheelControls.Instance.AngleToVertical != 0)
+                canRotate = false;
         }
-        else if (!_touchBuffer)
+
+        if (canRotate)
         {
-            CameraManager.Instance.CurrentLookState = targetFrame;
+            if (bounds.minX > mousePos.x || bounds.maxX < mousePos.x || bounds.minZ > mousePos.y || bounds.maxZ < mousePos.y)
+            {
+                _touchBuffer = false;
+            }
+            else if (!_touchBuffer)
+            {
+                CameraManager.Instance.CurrentLookState = targetFrame;
+            }
         }
     }
 
     public void OnPress(Vector2 mousePos)
     {
-        
+
     }
 
     public void OnDrawGizmosSelected()
