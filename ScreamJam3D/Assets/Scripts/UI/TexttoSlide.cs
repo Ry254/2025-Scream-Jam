@@ -11,12 +11,13 @@ public class TexttoSlide : MonoBehaviour
     private TMP_InputField text;
 
     [SerializeField]
-    //private AudioMixer mixer;
+    private AudioMixerGroup mixer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        slide.value = PlayerPrefs.GetFloat("volume", 100);
+        text.text = PlayerPrefs.GetFloat("volume", 100) + "";
     }
 
     // Update is called once per frame
@@ -27,12 +28,18 @@ public class TexttoSlide : MonoBehaviour
 
     public void SendToSlider(string num)
     {
-        slide.value = float.Parse(num);
-        //mixer.SetFloat("Master", float.Parse(num));
+        if (num.Length > 0)
+        {
+            slide.value = float.Parse(num);
+            mixer.audioMixer.SetFloat("Volume", (slide.value / 100 * 80 - 80));
+            PlayerPrefs.SetFloat("volume", slide.value);
+        }
     }
 
     public void SendToText(float num)
     {
         text.text = num + "";
+        mixer.audioMixer.SetFloat("Volume", (num / 100 * 80 - 80));
+        PlayerPrefs.SetFloat("volume", num);
     }
 }

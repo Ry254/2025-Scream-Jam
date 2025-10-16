@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Fridge : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class Fridge : MonoBehaviour
             decayTime++;
         }
 
-        tempMeter.rotation = Quaternion.Euler(-((meter / maxMeter) * 90) + 90, 0, 0);
+        tempMeter.localRotation = Quaternion.Euler(0, 0, -((meter / maxMeter) * 90) + 90);
 
         if (meter == 0)
         {
