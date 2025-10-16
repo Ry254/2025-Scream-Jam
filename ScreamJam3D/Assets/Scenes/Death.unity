@@ -378,7 +378,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.6
+  m_fontSize: 22.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -594,7 +594,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.1
+  m_fontSize: 19.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -839,7 +839,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: truck
       objectReference: {fileID: 0}
+    - target: {fileID: 2925070462583328317, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3708108287461733702, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027354817474116752, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -847,6 +855,10 @@ PrefabInstance:
       propertyPath: roadParent
       value: 
       objectReference: {fileID: 1780661667}
+    - target: {fileID: 5689449901955681431, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8894386423671340792, guid: d6f27d20f8b639d4885b7cde61ae765d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.317396

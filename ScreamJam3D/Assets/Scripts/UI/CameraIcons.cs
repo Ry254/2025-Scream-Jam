@@ -40,9 +40,9 @@ public class CameraIcons : MonoBehaviour
                     break;
 
                 case PlayerLookState.SteeringWheel:
-                    leftArrow.SetActive(true);
+                    leftArrow.SetActive(false);
                     rightArrow.SetActive(true);
-                    upArrow.SetActive(true);
+                    upArrow.SetActive(false);
                     downArrow.SetActive(true);
                     break;
 
