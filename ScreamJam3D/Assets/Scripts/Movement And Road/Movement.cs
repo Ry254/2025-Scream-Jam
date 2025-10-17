@@ -43,6 +43,7 @@ public class Movement : MonoBehaviour
     // Save the "Move" input action
     void Awake()
     {
+        Cursor.lockState = CursorLockMode.Confined;
         totalScore = 0;
         theCamera = Camera.allCameras[0].transform;
     }
