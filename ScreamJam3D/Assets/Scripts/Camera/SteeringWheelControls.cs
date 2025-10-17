@@ -54,8 +54,7 @@ public class SteeringWheelControls : MonoBehaviour, IMouseInteract
     void Start()
     {
         InputSystem.actions["Attack"].canceled += context => ReleaseWheel();
-
-        bounds.Center = new Bounds2D(0, 0, Camera.main.scaledPixelWidth, Camera.main.scaledPixelHeight).Size / 2;
+        bounds = ConvertToPercentBounds(bounds);
     }
 
     public void OnPress(Vector2 mousePos)
@@ -65,11 +64,6 @@ public class SteeringWheelControls : MonoBehaviour, IMouseInteract
         StopCoroutine(ResetRotation());
         IsWheelMoving = true;
         originalDirection = GetAngleDeg(direction);
-    }
-
-    public void Update()
-    {
-        Debug.Log(AngleToVertical);
     }
 
     public void OnToggleOn()
@@ -98,7 +92,10 @@ public class SteeringWheelControls : MonoBehaviour, IMouseInteract
         originalDirection = 0f;
         IsWheelMoving = false;
 
-        StartCoroutine(ResetRotation());
+        if (SteeringWheelControls.Instance != null)
+        {
+            StartCoroutine(ResetRotation());
+        }
     }
 
     public IEnumerator ResetRotation()
@@ -121,14 +118,44 @@ public class SteeringWheelControls : MonoBehaviour, IMouseInteract
 #if UNITY_EDITOR
     public void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(bounds.Center, bounds.outerRadius);
+        // WheelBounds newBounds = ConvertToPercentBounds(bounds);
+        // Vector3 weightedPos = Camera.main.ScreenToWorldPoint(new Vector3(newBounds.Center.x, newBounds.Center.y, frustrumStart));
 
-        Gizmos.color = Color.red;
+        // //Gizmos.DrawWireSphere(Camera.main.ScreenToWorldPoint(new Vector3(newBounds.Center.x,newBounds.Center.y, frustrumStart)), 0.1f * frustrumStart);
 
-        Gizmos.DrawWireSphere(bounds.Center, bounds.innerRadius);
+        // float worldHeight = Camera.main.orthographicSize;
+        // float worldWidth = worldHeight * Camera.main.aspect;
+
+        // newBounds.outerRadius = bounds.outerRadius / 100 * worldWidth;
+        // newBounds.innerRadius = bounds.innerRadius / 100 * worldWidth;
+
+        // Debug.Log(newBounds.outerRadius);
+
+        // Gizmos.color = Color.green;
+        // Gizmos.DrawWireSphere(weightedPos, newBounds.outerRadius * frustrumStart);
+
+        //Gizmos.color = Color.red;
+
+        //Gizmos.DrawWireSphere(weightedPos, newBounds.innerRadius * frustrumStart);
     }
 #endif
 
     protected float GetAngleDeg(Vector2 directionVector) => Mathf.Atan2(directionVector.y, directionVector.x) * Mathf.Rad2Deg;
+
+    private static WheelBounds ConvertToPercentBounds(WheelBounds bounds)
+    {
+        float yBounds = Camera.main.pixelHeight;
+        float xBounds = yBounds * Camera.main.aspect;
+
+        Vector2 modCenter = bounds.Center / 100;
+
+        WheelBounds newBounds = new();
+
+        newBounds.Center = new Vector2(modCenter.x * xBounds, modCenter.y * yBounds);
+
+        newBounds.outerRadius = bounds.outerRadius / 100 * xBounds;
+        newBounds.innerRadius = bounds.innerRadius / 100 * xBounds;
+
+        return newBounds;
+    }
 }

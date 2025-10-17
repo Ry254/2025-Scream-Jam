@@ -7,11 +7,9 @@ public class JeromeBehavior : MonoBehaviour
 
     //time in milliseconds
     [SerializeField]
-    private int sleepTime = 10000, awakeTime = 10000;
+    private int sleepTimeMin = 10000, sleepTimeMax = 30000, awakeTimeMin = 5000, awakeTimeMax = 15000;
 
-    private PlayerLookState currentLook;
-
-    private bool wait;
+    private int sleepTimeActual = 0, awakeTimeActual = 0;
 
     [SerializeField]
     private SkinnedMeshRenderer mesh;
@@ -22,56 +20,74 @@ public class JeromeBehavior : MonoBehaviour
         sleepTimer = new Stopwatch();
         awakeTimer = new Stopwatch();
 
-        currentLook = CameraManager.Instance.CurrentLookState;
         CameraManager.Instance.OnCameraChange += Look;
-        wait = false;
 
         mesh.enabled = false;
-
-        sleepTimer.Restart();
         awakeTimer.Stop();
-        UnityEngine.Debug.Log("Started");
+        sleepTimer.Restart();
+        sleepTimeActual = Random.Range(sleepTimeMin, sleepTimeMax);
     }
+
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (sleepTimer.ElapsedMilliseconds >= sleepTime && sleepTimer.IsRunning)
+        if (sleepTimer.ElapsedMilliseconds >= sleepTimeActual && sleepTimer.IsRunning)
         {
-            sleepTimer.Stop();
-            if (currentLook == PlayerLookState.RightWindow || currentLook == PlayerLookState.Fridge)
+            if (!CameraManager.Instance.LookingRightOfWheel)
             {
-                wait = true;
-            }
-            else
-            {
-                wait = false;
-                awakeTimer.Restart();
-                mesh.enabled = true;
+                SpawnJerome();
             }
         }
 
-        if (awakeTimer.ElapsedMilliseconds >= awakeTime && awakeTimer.IsRunning)
+        if (awakeTimer.ElapsedMilliseconds >= awakeTimeActual && awakeTimer.IsRunning)
         {
-            awakeTimer.Stop();
-            sleepTimer.Restart();
-            wait = false;
-            mesh.enabled = false;
+            DespawnJerome();
         }
+    }
+
+    private void SpawnJerome()
+    {
+        mesh.enabled = true;
+        sleepTimer.Stop();
+        awakeTimer.Restart();
+        LightFlickerController.Flicker();
+        LocalAudioManager.Instance.IsJeromeActive = true;
+        awakeTimeActual = Random.Range(awakeTimeMin, awakeTimeMax);
+    }
+
+    private void DespawnJerome()
+    {
+        mesh.enabled = false;
+        awakeTimer.Stop();
+        sleepTimer.Restart();
+        LightFlickerController.Flicker();
+        LocalAudioManager.Instance.IsJeromeActive = false;
+        sleepTimeActual = Random.Range(sleepTimeMin, sleepTimeMax);
     }
 
     public void Look(PlayerLookState look)
     {
-        if (wait && look != PlayerLookState.RightWindow && look != PlayerLookState.Fridge)
+        if (look == PlayerLookState.RightWindow && awakeTimer.IsRunning)
         {
-            awakeTimer.Restart();
-            wait = false;
-            mesh.enabled = false;
+            awakeTimer.Stop();
+            sleepTimer.Stop();
+            //DespawnJerome();
+            CameraManager.Instance.IsInPlay = false;
+            Invoke(nameof(GoToJeromeDeath), 0.1f);
         }
-        else if (look == PlayerLookState.RightWindow && awakeTimer.IsRunning)
+    }
+
+    public void GoToJeromeDeath()
+    {
+        DeathManager.Instance.CauseDeath("Curiosity killed the cat", "Some things want to be ignored");
+    }
+
+    public void OnDestroy()
+    {
+        if (CameraManager.Instance != null)
         {
-            DeathManager.Instance.CauseDeath("Jerome was awake.", "maybe sing some lullabys next time.");
+            CameraManager.Instance.OnCameraChange -= Look;
         }
-        currentLook = look;
     }
 }

@@ -15,19 +15,25 @@ public class Movement : MonoBehaviour
     public Transform speedDial;
     public Pedal accelerator;
     public Pedal brake;
+    private Transform theCamera;
+    public AudioSource SkidMarks;
+    public AnimationCurve Translator;
+
+    private float desiredVolume;
+
 
     // Movement variables
     [Header("Driving Variables")]
-    public int maxSpeed;
-    public int speedPerSecond;
-    public int brakingSpeed;
-    public int speedDecayPerSecond;
-    public int maxTurnAngle;
+    public float maxSpeed;
+    public float speedPerSecond;
+    public float brakingSpeed;
+    public float speedDecayPerSecond;
     public float maxSteeringWheelAngle;
     public int turnAnglePerSecond;
     [Range(0, 1)]
     public float speedRequiredForMaxTurnSpeed;
     private float truckVelocity;
+    private float _velocityOld = 0;
     private float turningValue;
 
     // Score values
@@ -35,9 +41,11 @@ public class Movement : MonoBehaviour
     private bool crashed;
 
     // Save the "Move" input action
-    void Start()
+    void Awake()
     {
+        Cursor.lockState = CursorLockMode.Confined;
         totalScore = 0;
+        theCamera = Camera.allCameras[0].transform;
     }
 
     // Process input to change forward velocity and turning, then rotate and move truck
@@ -46,18 +54,32 @@ public class Movement : MonoBehaviour
         if (!crashed)
         {
             float movement = accelerator.Value + brake.Value;
+            _velocityOld = truckVelocity;
             truckVelocity = Mathf.Clamp(movement > 0 ? truckVelocity + movement * Time.deltaTime * speedPerSecond
                 : truckVelocity + movement * Time.deltaTime * brakingSpeed, 0, maxSpeed);
             if (movement == 0)
                 truckVelocity = Mathf.Clamp(truckVelocity - speedDecayPerSecond * Time.deltaTime, 0, maxSpeed);
-            turningValue = Mathf.Clamp(SteeringWheelControls.Instance.AngleToVertical / maxSteeringWheelAngle, -maxSteeringWheelAngle, maxSteeringWheelAngle);
-            RotateTruck(turningValue * Time.deltaTime);
+
+            float oldTurningValue = turningValue;
+            turningValue = Mathf.Clamp(SteeringWheelControls.Instance.AngleToVertical / maxSteeringWheelAngle, -1, 1);
+
+            desiredVolume = Translator.Evaluate(Mathf.Abs(turningValue - oldTurningValue)) * Mathf.Clamp(truckVelocity / (maxSpeed * speedRequiredForMaxTurnSpeed), 0, 1);
+            SkidMarks.volume = Mathf.Lerp(SkidMarks.volume, desiredVolume, 0.3f);
+
+            RotateTruck(-turningValue * Time.deltaTime);
             MoveTruckForward(truckVelocity * Time.deltaTime);
 
+            // Changeing audio volume
+            if (_velocityOld != truckVelocity)
+            {
+                float proportion = Mathf.Clamp(truckVelocity, 0, 70) / 70f;
+                LocalAudioManager.Instance.TruckAmbianceVolume = proportion;
+            }
+            
             // Updating and showing score
             totalScore += truckVelocity * Time.deltaTime;
             scoreDisplay.text = $"{(int)totalScore}m";
-            speedDial.rotation = Quaternion.Euler(-(truckVelocity / maxSpeed * 180) + 90, 0, 0);
+            speedDial.localRotation = Quaternion.Euler(0, 0, -(truckVelocity / maxSpeed * 180) + 90);
         }
     }
 
@@ -76,7 +98,7 @@ public class Movement : MonoBehaviour
     /// <param name="speedValue">How quickly to turn/How many units to turn the world</param>
     public void RotateTruck(float turningValue)
     {
-        roadParent.RotateAround(truckTransform.position, Vector3.up, turningValue * Mathf.Clamp(truckVelocity / (maxSpeed * speedRequiredForMaxTurnSpeed), 0, 1));
+        roadParent.RotateAround(theCamera.position, Vector3.up, turningValue * Mathf.Clamp(truckVelocity / (maxSpeed * speedRequiredForMaxTurnSpeed) * turnAnglePerSecond, 0, turnAnglePerSecond));
     }
 
     private void OnTriggerEnter(Collider collider)

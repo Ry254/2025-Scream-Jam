@@ -26,6 +26,11 @@ public class CameraManager : MonoBehaviour
         }
     }
 
+    public PlayerLookState CameraLookState = PlayerLookState.None;
+
+    public bool LookingRightOfWheel => (_currentLookState & PlayerLookState.RightFrames) > 0;
+    public bool LookingDownVertical => (_currentLookState & PlayerLookState.Verticals) > 0;
+
     public Bounds2D DisplayBounds => _displayBounds;
 
     // Singleton Implementation
@@ -112,11 +117,9 @@ public class CameraManager : MonoBehaviour
                         boundary.OnToggleOn();
                     }
                 }
-
                 return mouseInteracts.ToArray();
             }
         }
-
         return mouseInteracts.ToArray();
     }
 }
