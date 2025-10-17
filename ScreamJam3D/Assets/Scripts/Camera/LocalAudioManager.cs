@@ -22,6 +22,12 @@ public class LocalAudioManager : MonoBehaviour
     public AudioSource JeromeSFXPlayer;
     public AudioClip JeromeSpawningSFX;
 
+    [Header("Button")]
+    public AudioSource buttonAudio;
+    public AudioClip buttonPush;
+    public AudioClip buttonRelease;
+
+
     private bool _isJeromeActive = false;
     
     public bool IsJeromeActive
@@ -70,5 +76,15 @@ public class LocalAudioManager : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void PlayButtonClick()
+    {
+        buttonAudio.Play();
+    }
+    
+    public void PlayButtonRelease()
+    {
+        buttonAudio.PlayOneShot(buttonRelease);
     }
 }
